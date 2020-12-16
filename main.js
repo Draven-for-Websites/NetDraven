@@ -16,3 +16,4 @@ function go() {
 function goback() {
   location.replace("index.html");
 }
+// ----------this is only for toggling between switching sign-in and going on and back between sign-in and home
