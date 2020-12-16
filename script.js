@@ -29,3 +29,9 @@ function showSlides(n) {
   dots[slideIndex - 1].className += " active";
 }
 // <!-- -----------------------------------------------------slide show in the index page----------------------------------------------------- -->
+function go() {
+  location.replace("store.html");
+}
+function goback() {
+  location.replace("index.html");
+}
