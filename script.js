@@ -2,7 +2,6 @@ var slideIndex = 1;
 
 function showSlides(n) {
   var slides = document.getElementsByClassName("mySlides");
-  console.log("slides ===>", slides);
   var dots = document.getElementsByClassName("dot");
   if (n > slides.length) {
     slideIndex = 1;
@@ -16,12 +15,14 @@ function showSlides(n) {
   for (var i = 0; i < dots.length; i++) {
     dots[i].className = dots[i].className.replace(" active", "");
   }
-  console.log("slides ===>", slides.length);
-  console.log("index", slideIndex - 1);
+  console.log("slides ===>", slides[0]);
+  // console.log("legth", slides.length);
   slides[slideIndex - 1].style.display = "block";
   dots[slideIndex - 1].className += " active";
 }
+
 showSlides(slideIndex);
+
 function plusSlides(n) {
   showSlides((slideIndex += n));
 }
@@ -32,7 +33,7 @@ function currentSlide(n) {
 // <!-- -----------------------------------------------------slide show in the index page----------------------------------------------------- -->
 function go() {
   $(".mail-adress").val();
-  location.replace("store.html");
+  location.replace("sign-in.html");
 }
 function goback() {
   location.replace("index.html");

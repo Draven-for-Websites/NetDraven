@@ -21,11 +21,10 @@ function makeSign() {
   var account = {};
   account.series = [];
   account.createAccount = createAccount;
-  //   account.signIn = signIn;
+  // account.signIn = signIn;
   return account;
 }
 var counter = 0;
-var people = makeSign();
 var createAccount = function () {
   var username = $("#username").val();
   var firstName = $("#first_name").val();
@@ -43,12 +42,14 @@ var createAccount = function () {
     age,
     id,
   };
+  console.log(createdAccount);
   var that = this;
   that.series.push(createdAccount);
   localStorage.setItem("createdAccount", JSON.stringify(that.series));
 };
+var people = makeSign();
 
-$(".Submit").on("click", function () {
+$(".submit").click(function () {
   people.createAccount();
   $("#username").val("");
   $("#first_name").val("");
@@ -57,3 +58,7 @@ $(".Submit").on("click", function () {
   $("#password").val("");
   $("#age").val("");
 });
+// ----------------for adding a new account its works and its storing in localStorage------------
+// var signIn = function(){
+
+// }
