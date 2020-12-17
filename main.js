@@ -21,9 +21,10 @@ function makeSign() {
   var account = {};
   account.series = [];
   account.createAccount = createAccount;
-  // account.signIn = signIn;
+  account.signIn = signIn;
   return account;
 }
+// ----------------------------first creating an account----------------------------
 var counter = 0;
 var createAccount = function () {
   var username = $("#username").val();
@@ -33,6 +34,10 @@ var createAccount = function () {
   var password = $("#password").val();
   var age = $("#age").val();
   var id = counter++;
+  if (!username || !firstName || !lastName || !password || !email || !age) {
+    alert("Please enter correct information");
+    return;
+  }
   var createdAccount = {
     username,
     firstName,
@@ -47,18 +52,49 @@ var createAccount = function () {
   that.series.push(createdAccount);
   localStorage.setItem("createdAccount", JSON.stringify(that.series));
 };
-var people = makeSign();
+var signIn = function (email, password) {
+  var array = JSON.parse(localStorage.getItem("createdAccount", people.series));
+  for (var i = 0; i < array.length; i++) {
+    if (email === array[i].email) {
+      if (password === array[i].password) {
+        console.log("success");
+        return;
+      } else {
+        alert("wrong password");
+        return;
+      }
+    }
+  }
+  alert("invalid email");
+};
 
-$(".submit").click(function () {
-  people.createAccount();
-  $("#username").val("");
-  $("#first_name").val("");
-  $("#last_name").val("");
-  $("#mail_adress").val("");
-  $("#password").val("");
-  $("#age").val("");
-});
 // ----------------for adding a new account its works and its storing in localStorage------------
-// var signIn = function(){
 
-// }
+var checkPassword = function (password) {
+  return password.length >= 8;
+};
+var checkEmail = function (email) {
+  return email.includes("@");
+};
+
+$("#submit-sign-in").click(function () {
+  var email = $("#email-sign-in").val();
+  var password = $("#password-sign-in").val();
+
+  people.signIn(email, password);
+});
+
+$("#submit").click(function () {
+  var password = $("#password").val();
+  var email = $("#mail_adress").val();
+  if (checkPassword(password) && checkEmail(email)) {
+    people.createAccount();
+    $("#username").val("");
+    $("#first_name").val("");
+    $("#last_name").val("");
+    $("#mail_adress").val("");
+    $("#password").val("");
+    $("#age").val("");
+  }
+});
+var people = makeSign();
