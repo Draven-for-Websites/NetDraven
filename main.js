@@ -1,5 +1,6 @@
 $(window).on("load", function () {
   $(".sign-in-input").hide();
+  $("#loging").hide();
 });
 $(document).ready(function () {
   $(".sign-in-click").click(function () {
@@ -7,6 +8,8 @@ $(document).ready(function () {
     $("p").toggle("slow");
     $("footer").toggle("slow");
     $(".sign-in-input").toggle("slow");
+    $(".sign-in-click").hide();
+    $("#loging").show();
   });
 });
 
@@ -103,14 +106,13 @@ $("#submit").click(function () {
   $("#mail_adress").val("");
   $("#password").val("");
   $("#age").val("");
-  $("#submit").click(goToMovie());
 });
 var people = makeSign();
-var library = function makevideos() {
+function makevideos() {
   var objects = {};
   objects.createBox = createBox;
   return objects;
-};
+}
 
 var createBox = function (title, category, video, image) {
   return {
@@ -120,4 +122,10 @@ var createBox = function (title, category, video, image) {
     image: image,
   };
 };
-library.createBox("THE SWORDSMAN Official Trailer", "Action");
+var library = makevideos();
+library.createBox(
+  "THE SWORDSMAN Official Trailer",
+  "Action",
+  "someone",
+  "someone"
+);

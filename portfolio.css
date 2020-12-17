@@ -16,19 +16,6 @@ h1,
 h2 {
   margin-top: 1%;
 }
-/* .portfolio {
-  position: relative;
-  margin-left: 5%;
-  margin-top: 5%;
-  width: 560px;
-  height: 400px;
-  display: flex;
-  flex-wrap: wrap;
-  background-color: whitesmoke;
-  padding: 10px;
-  border: 3px solid;
-  justify-content: space-around;
-} */
 .box {
   margin-top: 5%;
   margin-left: 3%;
@@ -36,6 +23,7 @@ h2 {
   background-color: whitesmoke;
   box-shadow: 10px 10px 5px #aaaaaa;
   flex-shrink: 0;
+  border: 1px solid white;
 }
 h5,
 h2 {
