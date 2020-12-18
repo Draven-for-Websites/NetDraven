@@ -1,5 +1,6 @@
 $(window).on("load", function () {
   $(".sign-in-input").hide();
+  $("#loging").hide();
 });
 $(document).ready(function () {
   $(".sign-in-click").click(function () {
@@ -7,11 +8,16 @@ $(document).ready(function () {
     $("p").toggle("slow");
     $("footer").toggle("slow");
     $(".sign-in-input").toggle("slow");
+    $(".sign-in-click").hide();
+    $("#loging").show();
   });
 });
 
 function go() {
   location.replace("sign-in.html");
+}
+function goToMovie() {
+  location.replace("movies.html");
 }
 function goback() {
   location.replace("index.html");
@@ -58,6 +64,10 @@ var signIn = function (email, password) {
     if (email === array[i].email) {
       if (password === array[i].password) {
         console.log("success");
+        $("#submit").click(goToMovie());
+        setInterval(function () {
+          alert("Welcome in NetDraven");
+        });
         return;
       } else {
         alert("wrong password");
@@ -80,21 +90,42 @@ var checkEmail = function (email) {
 $("#submit-sign-in").click(function () {
   var email = $("#email-sign-in").val();
   var password = $("#password-sign-in").val();
-
   people.signIn(email, password);
 });
 
 $("#submit").click(function () {
   var password = $("#password").val();
   var email = $("#mail_adress").val();
-  if (checkPassword(password) && checkEmail(email)) {
-    people.createAccount();
-    $("#username").val("");
-    $("#first_name").val("");
-    $("#last_name").val("");
-    $("#mail_adress").val("");
-    $("#password").val("");
-    $("#age").val("");
+  if (checkPassword(password) && checkEmail(email) === false) {
+    return;
   }
+  people.createAccount();
+  $("#username").val("");
+  $("#first_name").val("");
+  $("#last_name").val("");
+  $("#mail_adress").val("");
+  $("#password").val("");
+  $("#age").val("");
 });
 var people = makeSign();
+function makevideos() {
+  var objects = {};
+  objects.createBox = createBox;
+  return objects;
+}
+
+var createBox = function (title, category, video, image) {
+  return {
+    title: title,
+    category: category,
+    video: video,
+    image: image,
+  };
+};
+var library = makevideos();
+library.createBox(
+  "THE SWORDSMAN Official Trailer",
+  "Action",
+  "someone",
+  "someone"
+);
