@@ -185,7 +185,7 @@ function uncheck() {
   document.getElementById("checkbox1").checked = false;
   console.log($("#checkbox1"));
 }
-// --------------------------------------------------------------
+// ---------------------------------------------------------------------------------------
 $(".showFavorite").on("click", function () {
   var favorite = $(".play-list").val();
   if (favorite) {
@@ -195,7 +195,7 @@ $(".showFavorite").on("click", function () {
   $(".favorite-movies").hide();
 });
 
-// ------------------------------------fake data ---------------------------------------
+// ------------------------------------fake data --------------------------------------------
 var arrayOfmovies = [
   {
     title: "THE SWORDSMAN",
