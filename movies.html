@@ -7,15 +7,18 @@
     <link rel="stylesheet" href="/css files/portfolio.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Padauk&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   
     <title>Welcome to movie</title>
   </head>
   <body>
     <nav>
       <h1 onclick="goback()">NetDraven</h1>
-      <h2 class="sign-in-click" >Log out</h2>
+      <h2 class="sign-in-click" id="logg">Log out</h2>
+      <h1 class="showFavorite" >Play list</h1>
     </nav>
     <div class="portfolio">
-      <div class="box">
+      <div class="box" value="002">
         <iframe
           width="560"
           height="315"
@@ -26,32 +29,38 @@
           id="movie1"
         ></iframe>
         <h5>THE SWORDSMAN</h5>
+        <input type="checkbox" onclick="takeValue('THE SWORDSMAN')" class="play-list" id="checkbox1" value="PALMER"></input>
       </div>
-       <div class="box">
-       <iframe width="560" height="315" src="https://www.youtube.com/embed/OABSI3eYOk0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+       <div class="box" value="002">
+       <iframe width="560" height="315" src="https://www.youtube.com/embed/OABSI3eYOk0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen checked="checked"></iframe>
         <h5>PALMER</h5>
+        <input type="checkbox" onclick="takeValue('PALMER')" class="play-list" id="checkbox2" value="PALMER"></input>
       </div>
          <div class="box">
-       <iframe width="560" height="315" src="https://www.youtube.com/embed/Qjirz044BTU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>        <h5>NOBODY </h5>
+       <iframe width="560" height="315" src="https://www.youtube.com/embed/Qjirz044BTU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen checked="checked"></iframe>        <h5>NOBODY </h5>
+      <input type="checkbox" onclick="takeValue('NOBODY')" class="play-list"  id="checkbox3" value="NOBODY"></input>
+    </div>
+         <div class="box">
+       <iframe width="560" height="315" src="https://www.youtube.com/embed/Qjirz044BTU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen checked="checked"></iframe>
+       <h5>The MINIATURIST</h5>
+       <input type="checkbox" onclick="takeValue('The MINIATURIST')" class="play-list" id="checkbox4" value="The MINIATURIST"></input> 
       </div>
          <div class="box">
-       <iframe width="560" height="315" src="https://www.youtube.com/embed/Qjirz044BTU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <h5>The MINIATURIST</h5>
-      </div>
-         <div class="box">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/ccaNMcPqpQ0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/ccaNMcPqpQ0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen checked="checked"></iframe>
         <h5>WRONG TURN</h5>
+        <input type="checkbox" onclick="takeValue('WRONG TURN')" class="play-list" id="checkbox5" value="WRONG TURN"></input>
       </div>
          <div class="box">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/KYWzEqX-J-4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/KYWzEqX-J-4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen checked="checked"></iframe>
         <h5>GODMOTHERED</h5>
+          <input type="checkbox" onclick="takeValue('GODMOTHERED')" class="play-list" id="checkbox6" value="GODMOTHERED"></input>
       </div>
       
      
       </div>
-      <div class="picture">
+      <span class="favorite-movies">
 
-      </div>
+      </span>
     </div>
     <!-----------------------------------------script below-------------------------------->
     <script src="main.js"></script>

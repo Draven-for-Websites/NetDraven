@@ -1,6 +1,7 @@
 $(window).on("load", function () {
   $(".sign-in-input").hide();
   $("#loging").hide();
+  $(".favorite-movies").hide();
 });
 $(document).ready(function () {
   $(".sign-in-click").click(function () {
@@ -44,6 +45,26 @@ var createAccount = function () {
     alert("Please enter correct information");
     return;
   }
+  // if ($("#username").val("")) {
+  //   alert("username is missing");
+  //   return;
+  // }
+  // if ($("#first_name").val("")) {
+  //   alert("first name is missing");
+  //   return;
+  // }
+  // if ($("#last_name").val("")) {
+  //   alert("last name is missing");
+  //   return;
+  // }
+  // if ($("#mail_adress").val("")) {
+  //   alert("email is missing");
+  //   return;
+  // }
+  // if ($("#password").val("")) {
+  //   alert("password is missing");
+  //   return;
+  // }
   var createdAccount = {
     username,
     firstName,
@@ -57,6 +78,14 @@ var createAccount = function () {
   var that = this;
   that.series.push(createdAccount);
   localStorage.setItem("createdAccount", JSON.stringify(that.series));
+  $(".submit").click(function () {
+    $(".pharagraph").toggle("slow");
+    $("p").toggle("slow");
+    $("footer").toggle("slow");
+    $(".sign-in-input").toggle("slow");
+    $(".sign-in-click").hide();
+    $("#loging").show();
+  });
 };
 var signIn = function (email, password) {
   var array = JSON.parse(localStorage.getItem("createdAccount", people.series));
@@ -99,6 +128,7 @@ $("#submit").click(function () {
   if (checkPassword(password) && checkEmail(email) === false) {
     return;
   }
+
   people.createAccount();
   $("#username").val("");
   $("#first_name").val("");
@@ -129,3 +159,33 @@ library.createBox(
   "someone",
   "someone"
 );
+
+var getSelected = function () {
+  var n = $("input:checked").length;
+  console.log(n);
+};
+var result = document.getElementsByClassName("box");
+var rendered = [];
+
+function takeValue(value) {
+  console.log(value);
+  console.log($(".play-list").val());
+  if (takeValue() === !true) {
+    rendered.push(value);
+    return;
+  }
+}
+
+$(".showFavorite").on("click", function () {
+  var value = takeValue();
+  // var favorite = $(".play-list").val();
+  // if (favorite) {
+  var result = document.getElementsByClassName("box");
+  for (var i = 0; i < result.length; i++) {
+    if (result[i].innerHTML.value) {
+      // $(".box").toggle("slow");
+      // $(".favorite-movies").show();
+      $(".favorite-movies").hide();
+    }
+  }
+});
