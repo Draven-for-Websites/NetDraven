@@ -1,15 +1,17 @@
 $(window).on("load", function () {
   $(".sign-in-input").hide();
   $("#loging").hide();
+  $(".favorite-movies").hide();
 });
+
 $(document).ready(function () {
   $(".sign-in-click").click(function () {
     $(".pharagraph").toggle("slow");
     $("p").toggle("slow");
     $("footer").toggle("slow");
     $(".sign-in-input").toggle("slow");
-    $(".sign-in-click").hide();
-    $("#loging").show();
+    $("#sign-in-signup").toggle();
+    $("#loging").toggle();
   });
 });
 
@@ -22,6 +24,7 @@ function goToMovie() {
 function goback() {
   location.replace("index.html");
 }
+
 // ----------this is only for toggling between switching sign-in and going on and back between sign-in and home
 function makeSign() {
   var account = {};
@@ -44,6 +47,26 @@ var createAccount = function () {
     alert("Please enter correct information");
     return;
   }
+  // if ($("#username").val("")) {
+  //   alert("username is missing");
+  //   return;
+  // }
+  // if ($("#first_name").val("")) {
+  //   alert("first name is missing");
+  //   return;
+  // }
+  // if ($("#last_name").val("")) {
+  //   alert("last name is missing");
+  //   return;
+  // }
+  // if ($("#mail_adress").val("")) {
+  //   alert("email is missing");
+  //   return;
+  // }
+  // if ($("#password").val("")) {
+  //   alert("password is missing");
+  //   return;
+  // }
   var createdAccount = {
     username,
     firstName,
@@ -57,7 +80,16 @@ var createAccount = function () {
   var that = this;
   that.series.push(createdAccount);
   localStorage.setItem("createdAccount", JSON.stringify(that.series));
+  $(".submit").click(function () {
+    $(".pharagraph").toggle("slow");
+    $("p").toggle("slow");
+    $("footer").toggle("slow");
+    $(".sign-in-input").toggle("slow");
+    $(".sign-in-click").hide();
+    $("#loging").toggle();
+  });
 };
+
 var signIn = function (email, password) {
   var array = JSON.parse(localStorage.getItem("createdAccount", people.series));
   for (var i = 0; i < array.length; i++) {
@@ -99,6 +131,7 @@ $("#submit").click(function () {
   if (checkPassword(password) && checkEmail(email) === false) {
     return;
   }
+
   people.createAccount();
   $("#username").val("");
   $("#first_name").val("");
@@ -129,3 +162,87 @@ library.createBox(
   "someone",
   "someone"
 );
+
+// --------------------------------------------------------
+var getSelected = function () {
+  var n = $("input:checked").val();
+  console.log(n);
+};
+function checkINOut() {
+  $("#checkbox1").val();
+  check();
+
+  $("#checkbox1").val();
+  uncheck();
+}
+
+function check() {
+  $("#checkbox1").checked = true;
+  console.log(document.getElementById("checkbox1").checked);
+}
+
+function uncheck() {
+  document.getElementById("checkbox1").checked = false;
+  console.log($("#checkbox1"));
+}
+// --------------------------------------------------------------
+$(".showFavorite").on("click", function () {
+  var favorite = $(".play-list").val();
+  if (favorite) {
+    $(".portfolio").toggle("slow");
+    $(".favorite-movies").show();
+  }
+  $(".favorite-movies").hide();
+});
+
+// ------------------------------------fake data ---------------------------------------
+var arrayOfmovies = [
+  {
+    title: "THE SWORDSMAN",
+    input: `<input type="checkbox" onclick="checkINOut()" class="play-list" id="checkbox1" value="PALMER"></input>`,
+    video: ` <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/zLSXfcs3nFQ"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          id="movie1"
+        ></iframe>`,
+  },
+  {
+    title: "PALMER",
+    input: `<input type="checkbox" onclick="takeValue('PALMER')" class="play-list" id="checkbox1" value="PALMER"></input>`,
+    video: `<iframe width="560" height="315" src="https://www.youtube.com/embed/OABSI3eYOk0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen checked="checked"></iframe>`,
+  },
+  {
+    title: "NOBODY",
+    input: `<input type="checkbox" onclick="takeValue('NOBODY')" class="play-list" id="checkbox1" value="PALMER"></input>`,
+    video: `<iframe width="560" height="315" src="https://www.youtube.com/embed/Qjirz044BTU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen checked="checked"></iframe>`,
+  },
+  {
+    title: "The MINIATURIST",
+    input: `<input type="checkbox" onclick="takeValue('The MINIATURIST')" class="play-list" id="checkbox1" value="PALMER"></input>`,
+    video: `<iframe width="560" height="315" src="https://www.youtube.com/embed/Qjirz044BTU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen checked="checked"></iframe>`,
+  },
+  {
+    title: "WRONG TURN",
+    input: `<input type="checkbox" onclick="takeValue('WRONG TURN')" class="play-list" id="checkbox1" value="PALMER"></input>`,
+    video: `<iframe width="560" height="315" src="https://www.youtube.com/embed/ccaNMcPqpQ0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen checked="checked"></iframe> `,
+  },
+  {
+    title: "GODMOTHERED",
+    input: `<input type="checkbox" onclick="takeValue('GODMOTHERED')" class="play-list" id="checkbox1" value="PALMER"></input>`,
+    video: `<iframe width="560" height="315" src="https://www.youtube.com/embed/KYWzEqX-J-4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen checked="checked"></iframe>`,
+  },
+];
+
+for (var i = 0; i < arrayOfmovies.length; i++) {
+  $(".portfolio").append(
+    `<div class="box">${arrayOfmovies[i].video} '\n'<h5>  ${arrayOfmovies[i].title}  </h5> '\n'  ${arrayOfmovies[i].input}  </div>`
+  );
+  console.log(
+    "the arrays that has been done appending =>",
+    arrayOfmovies[i].title
+  );
+}
