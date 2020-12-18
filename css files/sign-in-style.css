@@ -95,6 +95,7 @@ footer {
   font-weight: bold;
   cursor: pointer;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-decoration: inherit;
 }
 .sign-in-input {
   padding: 20px;

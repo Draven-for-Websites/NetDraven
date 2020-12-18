@@ -54,14 +54,6 @@ h2 {
   width: 50px;
   background-image: url("/check-box-icon.jpg");
 }
-.favorite-movies {
-  border: 2px solid white;
-  padding: 200px;
-  float: center;
-  margin-left: 40%;
-  width: 80em;
-  height: 50%;
-}
 #logg {
   background-color: #333;
 }
