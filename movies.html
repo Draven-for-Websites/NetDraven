@@ -14,8 +14,8 @@
   <body>
     <nav>
       <h1 onclick="goback()">NetDraven</h1>
-      <h2 class="sign-in-click" id="logg">Log out</h2>
-      <h1 class="showFavorite" >Play list</h1>
+      <h2 class="sign-in-click" id="logg" onclick="signOut()">Log out</h2>
+      <h1 class="showFavorite" onclick="checkINOut()">Play list</h1>
     </nav>
     <div class="portfolio">
       <!-- <div class="box" value="002">
@@ -59,6 +59,7 @@
       -->
       </div>
     </div>
+    <div class="empty"></div>
     <!-----------------------------------------script below-------------------------------->
     <script src="main.js"></script>
     <script src="script.js"></script>

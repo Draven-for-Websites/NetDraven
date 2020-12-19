@@ -89,7 +89,7 @@ var createAccount = function () {
     $("#loging").toggle();
   });
 };
-
+//-------------------------------------- these functions below are made for sign-in and log out ------------------------------
 var signIn = function (email, password) {
   var array = JSON.parse(localStorage.getItem("createdAccount", people.series));
   for (var i = 0; i < array.length; i++) {
@@ -110,6 +110,13 @@ var signIn = function (email, password) {
   alert("invalid email");
 };
 
+var signOut = function () {
+  setInterval(function () {
+    alert("log out is done ");
+  }, 5000);
+  // localStorage.removeItem("createdAccount");
+  go();
+};
 // ----------------for adding a new account its works and its storing in localStorage------------
 
 var checkPassword = function (password) {
@@ -169,37 +176,37 @@ var getSelected = function () {
   console.log(n);
 };
 function checkINOut() {
-  $("#checkbox1").val();
-  check();
-
-  $("#checkbox1").val();
-  uncheck();
+  if ($("#checkbox1").checked === true) {
+    uncheck();
+  } else check();
+  $(".empty").append(
+    `<div class="box">${arrayOfmovies[i].video} '\n'<h5>  ${arrayOfmovies[i].title}  </h5> '\n'  ${arrayOfmovies[i].input}  </div>`
+  );
 }
-
 function check() {
   $("#checkbox1").checked = true;
   console.log(document.getElementById("checkbox1").checked);
 }
-
 function uncheck() {
   document.getElementById("checkbox1").checked = false;
   console.log($("#checkbox1"));
 }
+
 // ---------------------------------------------------------------------------------------
-$(".showFavorite").on("click", function () {
-  var favorite = $(".play-list").val();
-  if (favorite) {
-    $(".portfolio").toggle("slow");
-    $(".favorite-movies").show();
-  }
-  $(".favorite-movies").hide();
-});
+// $(".showFavorite").on("click", function () {
+//   var favorite = $(".play-list").val();
+//   if (favorite) {
+//     $(".portfolio").toggle("slow");
+//     $(".favorite-movies").show();
+//   }
+//   $(".favorite-movies").hide();
+// });
 
 // ------------------------------------fake data --------------------------------------------
 var arrayOfmovies = [
   {
     title: "THE SWORDSMAN",
-    input: `<input type="checkbox" onclick="checkINOut()" class="play-list" id="checkbox1" value="PALMER"></input>`,
+    input: `<input type="checkbox" class="play-list"></input>`,
     video: ` <iframe
           width="560"
           height="315"
@@ -212,37 +219,85 @@ var arrayOfmovies = [
   },
   {
     title: "PALMER",
-    input: `<input type="checkbox" onclick="takeValue('PALMER')" class="play-list" id="checkbox1" value="PALMER"></input>`,
-    video: `<iframe width="560" height="315" src="https://www.youtube.com/embed/OABSI3eYOk0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen checked="checked"></iframe>`,
+    input: `<input type="checkbox" class="play-list"></input>`,
+    video: `<iframe width="560" height="315" src="https://www.youtube.com/embed/OABSI3eYOk0" frameborder="0" allow="accelerometer;loop autoplay ; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen checked="checked"></iframe>`,
   },
   {
-    title: "NOBODY",
-    input: `<input type="checkbox" onclick="takeValue('NOBODY')" class="play-list" id="checkbox1" value="PALMER"></input>`,
-    video: `<iframe width="560" height="315" src="https://www.youtube.com/embed/Qjirz044BTU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen checked="checked"></iframe>`,
+    title: "Wengie's Best DIY Life ",
+    input: `<input type="checkbox" class="play-list"></input>`,
+    video: `<iframe width="560" height="315" src="https://www.youtube.com/embed/UgOHVomvjcI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`,
   },
   {
     title: "The MINIATURIST",
-    input: `<input type="checkbox" onclick="takeValue('The MINIATURIST')" class="play-list" id="checkbox1" value="PALMER"></input>`,
+    input: `<input type="checkbox" class="play-list"></input>`,
     video: `<iframe width="560" height="315" src="https://www.youtube.com/embed/Qjirz044BTU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen checked="checked"></iframe>`,
   },
   {
     title: "WRONG TURN",
-    input: `<input type="checkbox" onclick="takeValue('WRONG TURN')" class="play-list" id="checkbox1" value="PALMER"></input>`,
+    input: `<input type="checkbox" class="play-list"></input>`,
     video: `<iframe width="560" height="315" src="https://www.youtube.com/embed/ccaNMcPqpQ0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen checked="checked"></iframe> `,
   },
   {
     title: "GODMOTHERED",
-    input: `<input type="checkbox" onclick="takeValue('GODMOTHERED')" class="play-list" id="checkbox1" value="PALMER"></input>`,
+    input: `<input type="checkbox" class="play-list"></input>`,
     video: `<iframe width="560" height="315" src="https://www.youtube.com/embed/KYWzEqX-J-4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen checked="checked"></iframe>`,
   },
 ];
 
 for (var i = 0; i < arrayOfmovies.length; i++) {
   $(".portfolio").append(
-    `<div class="box">${arrayOfmovies[i].video} '\n'<h5>  ${arrayOfmovies[i].title}  </h5> '\n'  ${arrayOfmovies[i].input}  </div>`
+    `<div id="${i}" class="box">${arrayOfmovies[i].video} '\n'<h5>  ${arrayOfmovies[i].title}  </h5> '\n'  ${arrayOfmovies[i].input}  </div>`
   );
   console.log(
     "the arrays that has been done appending =>",
     arrayOfmovies[i].title
   );
+}
+
+// $(".emty").append(
+//   `<div class="box">${arrayOfmovies[i].video} '\n'<h5>  ${arrayOfmovies[i].title}  </h5> '\n'  ${arrayOfmovies[i].input}  </div>`
+// );
+var getSelected = function () {
+  var n = $("input:checked").val();
+  console.log(n);
+};
+
+var array = [];
+
+function checkINOut() {
+  var playList = $(".play-list");
+  var array = $(".play-list");
+  for (var i = 0; i < playList.length; i++) {
+    // correct it later
+    // if (array[i] === playList[i].checked) {
+    //   $(".empty").empty(
+    //     `<div id="${i}" class="box">${arrayOfmovies[i].video} '\n'<h5>  ${arrayOfmovies[i].title}  </h5> '\n'  ${arrayOfmovies[i].input}  </div>`
+    //   );
+    // }
+    console.log(playList[i].checked);
+
+    if (playList[i].checked) {
+      $(".empty").append(
+        `<div id="${i}" class="box">${arrayOfmovies[i].video} '\n'<h5>  ${arrayOfmovies[i].title}  </h5> '\n'  ${arrayOfmovies[i].input}  </div>`,
+        $(".portfolio").toggle()
+      );
+    }
+  }
+  // for (var i = 0; i <)
+  // if ($("#checkbox1").checked === true) {
+  //   uncheck();
+  // } else {
+  //   check();
+  //   $(".empty").append(
+  //     `<div class="box">${arrayOfmovies[i].video} '\n'<h5>  ${arrayOfmovies[i].title}  </h5> '\n'  ${arrayOfmovies[i].input}  </div>`
+  //   );
+  // }
+}
+function check() {
+  $("#checkbox1").checked = true;
+  console.log(document.getElementById("checkbox1").checked);
+}
+function uncheck() {
+  document.getElementById("checkbox1").checked = false;
+  console.log($("#checkbox1"));
 }
