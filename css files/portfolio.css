@@ -48,6 +48,7 @@ h2 {
   width: 50px;
   -webkit-appearance: none;
   outline: none;
+  color: black;
 }
 .play-list:checked {
   height: 50px;
